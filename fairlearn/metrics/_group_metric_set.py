@@ -64,6 +64,15 @@ SELECTION_RATE = "selection_rate"
 SPECIFICITY_SCORE = "specificity_score"
 ZERO_ONE_LOSS = "zero_one_loss"
 
+
+def roc_auc_wrapper(y_true, y_pred):
+    result = 0
+    try:
+        result = skm.roc_auc_score(y_true, y_pred)
+    except ValueError:
+        print("Caught error from roc_auc_score, substituting {0}".format(result))
+    return result
+
 BINARY_CLASSIFICATION_METRICS = {}
 BINARY_CLASSIFICATION_METRICS[ACCURACY_SCORE] = skm.accuracy_score
 BINARY_CLASSIFICATION_METRICS[COUNT] = count
