@@ -30,7 +30,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/fairlearn/fairlearn",
     packages=setuptools.find_packages(),
-    python_requires='>=3.7',
+    python_requires='>=3.6',
     install_requires=install_requires,
     extras_require=extras_require,
     classifiers=[
