@@ -62,7 +62,12 @@ def _validate_and_reformat_input(X, y=None, expect_y=True, enforce_binary_labels
         estimator.
 
     """
+    if isinstance(X, tf.Tensor):
+        X = X.numpy()
+
     if y is not None:
+        if isinstance(y, tf.Tensor):
+            y = y.numpy()
         # calling check_X_y with a 2-dimensional y causes a warning, so ensure it is 1-dimensional
         if isinstance(y, np.ndarray) and len(y.shape) == 2 and y.shape[1] == 1:
             y = y.reshape(-1)

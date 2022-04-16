@@ -2,6 +2,7 @@
 # Licensed under the MIT License.
 
 import numpy as np
+import tensorflow as tf
 
 _ARRAY_NOT_1D = "Supplied input array has more than one non-trivial dimension"
 
@@ -11,6 +12,10 @@ def _convert_to_ndarray_and_squeeze(target):
 
     There is a special case to stop single element arrays being converted to scalars.
     """
+    if isinstance(target, tf.Tensor):
+        target = target.numpy()
+
+
     result = np.asarray(target)
 
     if result.size > 1:
@@ -26,6 +31,10 @@ def _convert_to_ndarray_1d(target):
 
     If the input is multi-dimension, this will raise an exception
     """
+    if isinstance(target, tf.Tensor):
+        target = target.numpy()
+
+
     result = _convert_to_ndarray_and_squeeze(target)
 
     if len(result.shape) > 1:

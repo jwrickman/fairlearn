@@ -320,7 +320,7 @@ class MetricFrame:
         ] = None,
     ):
         """Read a placeholder comment."""
-        check_consistent_length(y_true, y_pred)
+        #check_consistent_length(y_true, y_pred)
 
         y_t = _convert_to_ndarray_and_squeeze(y_true)
         y_p = _convert_to_ndarray_and_squeeze(y_pred)
